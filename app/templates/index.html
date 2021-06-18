@@ -1,1 +1,6 @@
-<h1> Hello World </h1>
+{% extends 'base.html'%}
+{% block content %}
+<li>{{quotes.quote}}</li>
+<p>{{quotes.author}}</p>
+
+{% endblock %}
