@@ -1,10 +1,10 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from ..request import get_quotes
 from ..models import Blog, User,Comment
-from .forms import UpdateProfile
+from .forms import UpdateProfile, UploadBlog, CommentsForm
 from .. import db,photos
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 # Views
 @main.route('/')
 def index():
@@ -54,3 +54,17 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/user/upload/blog',methods=['GET','POST'])
+@login_required
+def upload_blog():
+    blog=UploadBlog()
+    if current_user is None:
+        abort(404)
+    if blog.validate_on_submit():
+        blog=Blog(blog=blog.blog.data,user=current_user)
+        db.session.add(blog)
+        db.session.commit()
+        flash('Blog Uploaded')
+        return redirect(url_for('main.index'))
+    return render_template('profile/new_blog.html',blog=blog,title='Create Blog',legend='Create Blog')
