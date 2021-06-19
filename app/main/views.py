@@ -1,9 +1,9 @@
-from flask import render_template
-from app import app
-from .request import get_quotes
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_quotes
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
