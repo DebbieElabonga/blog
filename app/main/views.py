@@ -116,6 +116,6 @@ def comment_blog(blog_id):
         blog_id = blog_id
         user_id = current_user._get_current_object().id
         comment_object = Comment(comment=new_comment,user_id=user_id,blog_id=blog_id)
-        comment_object.save_comment
+        comment_object.save_comment()
         return redirect(url_for(".comment_blog",blog_id=blog_id))
     return render_template("comments.html",comment_form=form,blog=blog,all_comments=all_comments)

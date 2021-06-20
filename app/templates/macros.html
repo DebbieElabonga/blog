@@ -1,7 +1,23 @@
 {% macro displayBlog(blog_list)%}
-    {% for blog in blog_list %}
-        {{blog.title}}
-        {{blog.blog}}
-    {% endfor %}
+   
+    <div class="container"style="font-family: sans-serif; color:black;">
+        <div class="row"style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
 
+            <div class="col-md-2 col-lg-2 col-xs-1"></div>
+        <div class="col-md-8 col-lg-8 col-xs-10 ">
+          
+            <h1 style="text-align: center;">Blogs</h1>
+            <ul class="list-index ">
+         {% for blog in blog_list %}
+         <li class="jumbotron " style="padding-left:40px ; list-style-type: none;">                 
+            <div class="card mb-7 bg-info text-white">
+                <div class="card-body">
+        <p><b>Title:</b>{{blog.title}}</p>
+        <p><b>Blog:</b>{{blog.blog}}</p>
+        <a href="{{url_for('main.comment_blog',blog_id=blog.id)}}"><button type="button" class="btn btn-success">Comment</button></a><br>   
+    {% endfor %}
+</div>
+        </div>
+    </div>
+</div>
 {% endmacro %}
