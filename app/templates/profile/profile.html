@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 
 {% block content %}
 <div class="container">
@@ -33,6 +34,7 @@
       <input type="file"  name="photo" class="form-control" required>
       <input type="submit">
     </form>
+    {{macro.displayUserBlogs(blogs)}}
       {% endif %}
 </div>
 </div>

@@ -3,8 +3,8 @@
 {% import 'macros.html' as macro %}
 
 {% block content%}
-    {{blog}} <br>
-    {{all_comments}}
+    <h3><p>{{blog}}</p><br></h3>
+    {{macro.displayComments(all_comments)}}
     {{wtf.quick_form(comment_form)}}
 
 {% endblock %}
