@@ -1,5 +1,5 @@
 {% macro displayBlog(blog_list)%}
-   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="container"style="font-family: sans-serif; color:black;">
         <div class="row"style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
 
@@ -14,7 +14,9 @@
                 <div class="card-body">
         <p><b>Title:</b>{{blog.title}}</p>
         <p><b>Blog:</b>{{blog.blog}}</p>
-        <a href="{{url_for('main.comment_blog',blog_id=blog.id)}}"><button type="button" class="btn btn-success">Comment</button></a><br>   
+        <a href="{{url_for('main.comment_blog',blog_id=blog.id)}}"><button type="button" class="btn btn-success">Comment</button></a><br>  
+        <a href="{{url_for('main.delete_blog',blog_id=blog.id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+         
     {% endfor %}
 </div>
         </div>

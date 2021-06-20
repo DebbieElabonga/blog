@@ -93,7 +93,7 @@ def update(pname):
 
     return render_template('profile/update_blog.html',form=form,legend="Update Blog")
 
-@main.route('/<int:blog_id>/delete',methods=['POST'])
+@main.route('/<int:blog_id>/delete',methods=['POST','GET'])
 @login_required
 def delete_blog(blog_id):
     blog=Blog.query.get(blog_id)
