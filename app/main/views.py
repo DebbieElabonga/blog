@@ -74,11 +74,11 @@ def upload_blog():
     return render_template('profile/new_blog.html',blog=blog,title='Create Blog',legend='Create Blog')
 
 
-@main.route('/<int:pname>/update',methods=['GET','POST'])
+@main.route('/<int:blog_id>/update',methods=['GET','POST'])
 @login_required
-def update(pname):
+def update(blog_id):
     form=UploadBlog()
-    blog=Blog.query.get(pname)
+    blog=Blog.query.get(blog_id)
     if blog.user != current_user:
         abort(403)
     if form.validate_on_submit():
@@ -88,7 +88,7 @@ def update(pname):
         flash('Successfully Updated!')
         return redirect(url_for('main.profile',uname=blog.user.username))
     elif request.method=='GET':
-        form.title.data=blog.blog_title
+        form.title.data=blog.title
         form.blog.data=blog.blog
 
     return render_template('profile/update_blog.html',form=form,legend="Update Blog")
