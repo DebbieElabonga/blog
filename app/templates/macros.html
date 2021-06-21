@@ -34,6 +34,7 @@
     <div class="card mb-7 bg-info text-white">
         <div class="card-body">
    <p>{{comment.comment}}</p>
+   <p>Posted by:{{comment.user}}</p>
     {{comment.posted.strftime('%Y-%m-%d')}}
 {%endfor %}
 

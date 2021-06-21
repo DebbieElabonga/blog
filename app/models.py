@@ -48,7 +48,7 @@ class User(UserMixin,db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f' {self.username}'
 
 class Blog(db.Model):
     __tablename__='blog'
@@ -66,7 +66,7 @@ class Blog(db.Model):
         db.session.commit()
 
     def __repr__(self):
-       return f'blog {self.title}'
+       return f' {self.title}'
 
 class Comment(db.Model):
     __tablename__='comments'
