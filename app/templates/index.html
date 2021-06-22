@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 {%import 'macros.html' as macro %}
 {% block content %}
-{{macro.displayBlog(blog)}}
+
+
 <li>{{quotes.quote}}</li>
 <p>{{quotes.author}}</p>
-
+{{macro.displayBlog(blog)}}
 {% endblock %}
